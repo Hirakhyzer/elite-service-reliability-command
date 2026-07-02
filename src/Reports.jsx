@@ -3,7 +3,7 @@ import { Badge, Button, Metric, PageHeading, Panel } from "./ui";
 
 const tone = (value) => value === "Safe" || value === "Met" ? "success" : value === "Watch" ? "warning" : "danger";
 
-export function Reports({ state, summary, selected, analysis, saveReport, removeReport, exportText, exportJson, resetWorkspace }) {
+export function Reports({ state, summary, selected, selectedAnalysis: analysis, saveReport, removeReport, exportText, exportJson, resetWorkspace }) {
   return <div className="page">
     <PageHeading eyebrow="Reliability governance" title="Service reports and prevention records" text="Save the incident position before a client review, escalation meeting, root-cause review, or prevention decision." action={<Button onClick={saveReport}>Save incident snapshot</Button>}/>
     <div className="metrics"><Metric label="SLA position" value={analysis.breach} detail={`${analysis.score}/100 breach risk`} tone={tone(analysis.breach)} icon="◆"/><Metric label="Client impact" value={`${analysis.impact}/100`} detail={`${selected.affectedUsers} affected users`} tone={analysis.impact >= 70 ? "danger" : "warning"} icon="!"/><Metric label="Recovery progress" value={percent(analysis.completion)} detail={`${selected.recovery.filter((item)=>item.done).length}/${selected.recovery.length} steps complete`} tone={analysis.completion >= 70 ? "success" : "gold"} icon="✓"/><Metric label="Active incidents" value={summary.active.length} detail={`${summary.atRisk.length} require extra attention`} tone={summary.atRisk.length ? "warning" : "blue"} icon="◷"/></div>
