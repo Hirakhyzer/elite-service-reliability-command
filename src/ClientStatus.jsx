@@ -2,7 +2,7 @@ import { clientUpdate } from "./status";
 import { dateTime } from "./logic";
 import { Badge, Button, PageHeading, Panel, Progress } from "./ui";
 
-export function ClientStatus({ selected, analysis, setTab }) {
+export function ClientStatus({ selected, selectedAnalysis: analysis, setTab }) {
   const update = clientUpdate(selected, analysis);
   const visibleUpdates = selected.updates.filter((item) => item.visibility === "Client").slice().reverse();
   return <div className="page client-page">
