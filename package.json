@@ -1,5 +1,1 @@
-{
-  "name": "elite-service-reliability-command",
-  "version": "1.0.0",
-  "type": "module"
-}
+{"name":"elite-service-reliability-command","version":"1.0.0","type":"module","scripts":{"dev":"vite"}}
